@@ -1,0 +1,40 @@
+.documentation-container {
+    background-color: #262626; /* Panel Background (Dark Gray) */
+    color: white; /* Set text color to white */
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.documentation-container h1 {
+    color: #FF6B00; /* Main Accent (Fire Orange) */
+    text-align: center;
+}
+
+.documentation-container h2 {
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+    margin-top: 20px;
+}
+
+.documentation-container p, .documentation-container ul {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.documentation-container ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.documentation-container pre {
+    background-color: #333333; /* Slightly darker background for sections */
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+.documentation-container code {
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+}

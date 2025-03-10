@@ -1,0 +1,677 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1A1A1A; /* Dark Background (Charcoal) */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: white; /* Set text color to white */
+}
+
+/* Removed header and menu styles */
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex: 1;
+}
+
+footer {
+    background-color: #111111; /* Navbar Background */
+    color: #FF6B00; /* Main Accent (Fire Orange) */
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    z-index: 0;
+    width: 100%;
+}
+
+.panel {
+    background-color: #262626; /* Panel Background (Dark Gray) */
+    color: white; /* Set text color to white */
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    width: 75%; /* Default width for mobile devices */
+}
+
+.panel h2 {
+    margin-top: 0;
+}
+
+.panel table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px; /* Add border radius to the table */
+    overflow: hidden; /* Ensure the border radius is applied */
+}
+
+.panel table, .panel th, .panel td {
+    border: 2px solid #333333; /* Table Header */
+}
+
+.panel th, .panel td {
+    padding: 10px;
+    text-align: left;
+    color: white; /* Set text color to white */
+}
+
+.panel th {
+    background-color: #333333; /* Table Header */
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+    font-weight: bold;
+}
+
+.panel tr:nth-child(even) {
+    background-color: #1F1F1F; /* Even Row Background */
+}
+
+.panel tr:nth-child(odd) {
+    background-color: #292929; /* Odd Row Background */
+}
+
+.panel tr:hover {
+    background-color: #3A3A3A; /* Highlighted Row (Hover) */
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+    .panel {
+        width: 60%; /* Width for larger screens */
+    }
+}
+
+.students-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.student-info {
+    background-color: #262626; /* Panel Background (Dark Gray) */
+    color: white; /* Set text color to white */
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.student-info h2 {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    color: #FF6B00; /* Main Accent (Fire Orange) */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.student-score {
+    font-size: 24px;
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+    margin-left: 5px;
+}
+
+.student-info p {
+    margin: 10px 0;
+}
+
+.login-container {
+    background-color: #262626; /* Panel Background (Dark Gray) */
+    color: white; /* Set text color to white */
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-top: 0;
+    color: #FF6B00; /* Main Accent (Fire Orange) */
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-container label {
+    text-align: left;
+    font-weight: bold;
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+}
+
+.login-container input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333333; /* Dark background for inputs */
+    color: white; /* Set text color to white */
+    font-size: 16px;
+    width: 93%; /* Ensure consistent width */
+    -webkit-appearance: none; /* Prevent default look on WebKit browsers */
+    -moz-appearance: none; /* Prevent default look on Firefox */
+    appearance: none; /* Prevent default look on other browsers */
+}
+
+.login-container input:focus {
+    outline: none;
+    border: 2px solid #FF6B00; /* Main Accent (Fire Orange) */
+}
+
+.login-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #FF6B00; /* Main Accent (Fire Orange) */
+    color: white; /* Set text color to white */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #FF8500; /* Hover (Lighter Fire) */
+}
+
+.error-container {
+    background-color: #262626; /* Panel Background (Dark Gray) */
+    color: white; /* Set text color to white */
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.error-container h2 {
+    margin-top: 0;
+    color: #FF6B00; /* Main Accent (Fire Orange) */
+}
+
+.error-container p {
+    margin: 10px 0;
+}
+
+.error-container .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #FF6B00; /* Main Accent (Fire Orange) */
+    color: white; /* Set text color to white */
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.error-container .btn:hover {
+    background-color: #FF8500; /* Hover (Lighter Fire) */
+}
+
+.manage-panel-container {
+    background-color: #262626; /* Panel Background (Dark Gray) */
+    color: white; /* Set text color to white */
+    padding: 20px;
+    border-radius: 8px;
+    width: 75%;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.manage-panel-container h2 {
+    margin-top: 0;
+    color: #FF6B00; /* Main Accent (Fire Orange) */
+}
+
+.manage-section {
+    background-color: #333333; /* Slightly darker background for sections */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.manage-section h3 {
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+}
+
+.manage-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.manage-section label {
+    text-align: left;
+    font-weight: bold;
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+}
+
+.manage-section input, .manage-section select, .manage-section textarea, input[type="password"], input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #444444; /* Dark background for inputs */
+    color: white; /* Set text color to white */
+    font-size: 16px;
+    width: 93%; /* Ensure consistent width */
+    max-width: 300px;
+    -webkit-appearance: none; /* Prevent default look on WebKit browsers */
+    -moz-appearance: none; /* Prevent default look on Firefox */
+    appearance: none; /* Prevent default look on other browsers */
+}
+
+.manage-section input:focus, .manage-section select:focus, .manage-section textarea:focus {
+    outline: none;
+    border: 2px solid #FF6B00; /* Main Accent (Fire Orange) */
+}
+
+.manage-section button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #FF6B00; /* Main Accent (Fire Orange) */
+    color: white; /* Set text color to white */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.manage-section button:hover {
+    background-color: #FF8500; /* Hover (Lighter Fire) */
+}
+
+a{
+    color: #FF8500;
+}
+
+/* Universal table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px; /* Add border radius to the table */
+    overflow: hidden; /* Ensure the border radius is applied */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    color: white; /* Set text color to white */
+    border: 2px solid #333333; /* Table Header */
+}
+
+th {
+    background-color: #333333; /* Table Header */
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #1F1F1F; /* Even Row Background */
+}
+
+tr:nth-child(odd) {
+    background-color: #292929; /* Odd Row Background */
+}
+
+tr:hover {
+    background-color: #3A3A3A; /* Highlighted Row (Hover) */
+}
+
+/* Styles for the students in group table */
+#group_students_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px; /* Add border radius to the table */
+    overflow: hidden; /* Ensure the border radius is applied */
+}
+
+/* Styles for group info and members */
+.group-info {
+    width: 97%;
+    background-color: #333333; /* Slightly darker background for sections */
+    color: white; /* Set text color to white */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.group-info:hover {
+    background-color: #444444; /* Hover (Lighter Dark Gray) */
+}
+
+.group-members {
+    width: 91%;
+    background-color: #444444; /* Slightly darker background for sections */
+    color: white; /* Set text color to white */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border-left: 4px solid #FF6B00; /* Highlight border to indicate part of the group */
+}
+
+.group-members ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.group-members li {
+    padding: 5px 0;
+    border-bottom: 1px solid #555555; /* Divider between members */
+    display: flex;
+    justify-content: space-between;
+}
+
+.group-members li:last-child {
+    border-bottom: none; /* Remove divider for the last member */
+}
+
+.group-members li span.evaluation {
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+    font-size: 16px; /* Slightly bigger font size */
+    margin-left: auto;
+}
+
+.toggle-symbol {
+    font-size: 18px;
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+    margin-left: 10px;
+}
+
+.bet-container {
+    background-color: #262626; /* Panel Background (Dark Gray) */
+    color: white; /* Set text color to white */
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.bet-container h2 {
+    margin-top: 0;
+    color: #FF6B00; /* Main Accent (Fire Orange) */
+}
+
+.bet-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.bet-container label {
+    text-align: left;
+    font-weight: bold;
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+}
+
+.bet-container input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333333; /* Dark background for inputs */
+    color: white; /* Set text color to white */
+    font-size: 16px;
+    width: 93%; /* Ensure consistent width */
+    -webkit-appearance: none; /* Prevent default look on WebKit browsers */
+    -moz-appearance: none; /* Prevent default look on Firefox */
+    appearance: none; /* Prevent default look on other browsers */
+}
+
+.bet-container input:focus {
+    outline: none;
+    border: 2px solid #FF6B00; /* Main Accent (Fire Orange) */
+}
+
+.bet-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #FF6B00; /* Main Accent (Fire Orange) */
+    color: white; /* Set text color to white */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.bet-container button:hover {
+    background-color: #FF8500; /* Hover (Lighter Fire) */
+}
+
+.bets-info {
+    background-color: #262626; /* Panel Background (Dark Gray) */
+    color: white; /* Set text color to white */
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    width: 75%; /* Default width for mobile devices */
+}
+
+.bets-info h2 {
+    margin-top: 0;
+    color: #FF6B00; /* Main Accent (Fire Orange) */
+}
+
+.bets-info table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px; /* Add border radius to the table */
+    overflow: hidden; /* Ensure the border radius is applied */
+}
+
+.bets-info th, .bets-info td {
+    padding: 10px;
+    text-align: left;
+    color: white; /* Set text color to white */
+    border: 2px solid #333333; /* Table Header */
+}
+
+.bets-info th {
+    background-color: #333333; /* Table Header */
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+    font-weight: bold;
+}
+
+.bets-info tr:nth-child(even) {
+    background-color: #1F1F1F; /* Even Row Background */
+}
+
+.bets-info tr:nth-child(odd) {
+    background-color: #292929; /* Odd Row Background */
+}
+
+.bets-info tr:hover {
+    background-color: #3A3A3A; /* Highlighted Row (Hover) */
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bet {
+    background-color: #333333; /* Slightly darker background for sections */
+    color: white; /* Set text color to white */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bet p {
+    margin: 5px 0;
+}
+
+.place-bet-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #FF6B00; /* Main Accent (Fire Orange) */
+    color: white; /* Set text color to white */
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.place-bet-btn:hover {
+    background-color: #FF8500; /* Hover (Lighter Fire) */
+    transform: scale(1.05);
+}
+
+.place-bet-btn:active {
+    background-color: #FF6B00; /* Main Accent (Fire Orange) */
+    transform: scale(1);
+}
+
+.place-bet-btn.disabled {
+    background-color: #555555; /* Disabled background color */
+    cursor: not-allowed;
+    transform: none;
+}
+
+.coefficient {
+    font-size: 24px; /* Larger font size */
+    color: #FFB300; /* Yellow color */
+    font-weight: bold;
+    text-align: left;
+}
+
+.more-info-btn {
+    background-color: transparent; /* Make the button background transparent */
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+    border: none;
+    padding: 0;
+    font-size: 14px; /* Increase font size */
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    margin-left: 5px; /* Move closer to the name */
+    vertical-align: middle; /* Align vertically with the name */
+}
+
+.more-info-btn:hover {
+    color: #FFD700; /* Hover (Brighter Yellow) */
+    transform: scale(1.1);
+}
+
+.more-info-btn:active {
+    color: #FFB300; /* Secondary Accent (Deep Amber) */
+    transform: scale(1);
+}
+
+.comments-section {
+    margin-top: 20px;
+}
+
+.comments-section h3 {
+    margin-top: 0;
+    color: #FF6B00; /* Main Accent (Fire Orange) */
+}
+
+.comment {
+    width: 97%;
+    background-color: #333333; /* Slightly darker background for sections */
+    color: white; /* Set text color to white */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.comment p {
+    margin: 5px 0;
+}
+
+.like-btn {
+    background-color: transparent; /* Make the button background transparent */
+    color: #FF6B00; /* Main Accent (Fire Orange) */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.like-btn:hover {
+    color: #FF8500; /* Hover (Lighter Fire) */
+}
+
+.show-more-btn, .hide-btn {
+    background-color: transparent; /* Make the button background transparent */
+    color: #FF6B00; /* Main Accent (Fire Orange) */
+    border: none;
+    padding: 0;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.show-more-btn:hover, .hide-btn:hover {
+    color: #FF8500; /* Hover (Lighter Fire) */
+}
+
+.blurred {
+    filter: blur(5px);
+    cursor: pointer;
+}
+
+#comment-form {
+    margin-top: 20px;
+}
+
+#comment-form textarea {
+    width: 97%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #444444; /* Dark background for inputs */
+    color: white; /* Set text color to white */
+    font-size: 16px;
+    resize: vertical;
+}
+
+#comment-form button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #FF6B00; /* Main Accent (Fire Orange) */
+    color: white; /* Set text color to white */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#comment-form button:hover {
+    background-color: #FF8500; /* Hover (Lighter Fire) */
+}
+
