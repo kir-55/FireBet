@@ -26,6 +26,7 @@ FireBet to aplikacja webowa, która umożliwia studentom zakładanie się na wyn
     - Możliwość polubienia komentarzy.
 
 ## Struktura Bazy Danych
+![image](https://github.com/user-attachments/assets/3ffbf4a2-2ebd-4a3f-a6fe-4cf137974468)
 
 Baza danych składa się z następujących tabel:
 
