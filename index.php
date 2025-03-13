@@ -12,26 +12,26 @@
     <?php include 'header.php'; ?>
     <main class="main-container">
         <?php
-        // Include the database credentials
+        
         include 'config/variables.php';
 
-        // Connect to the database
+        
         $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-        // Check connection
+        
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Get the current date
+        
         $current_date = date('Y-m-d');
 
-        // Query to find ongoing v-bank
+        
         $sql = "SELECT id, title, date FROM vbanks WHERE date > '$current_date' ORDER BY date ASC";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            // Output data of the ongoing v-bank
+            
             while($row = $result->fetch_assoc()) {
                 echo "<div class='panel'>";
                 echo "<h2>Ongoing V-Bank: " . $row["title"]. "  " . $row["date"]. "</h2>";
@@ -41,7 +41,7 @@
                 $groups = $conn->query($sql);
 
                 if ($groups->num_rows > 0) {
-                    // Calculate total bets amount for the V-Bank
+                    
                     $sql = "SELECT SUM(bets.amount) AS total_bets FROM bets JOIN `groups` ON bets.group_id = `groups`.id WHERE `groups`.vbank_id = " . $vbank_id;
                     $total_bets_result = $conn->query($sql);
                     $total_bets = $total_bets_result->fetch_assoc()["total_bets"];
@@ -51,16 +51,16 @@
                         $leader_result = $conn->query($sql);
                         $leader = $leader_result->fetch_assoc()["name"];
 
-                        // Calculate the average evaluation of the group members
+                        
                         $sql = "SELECT AVG(students.evaluation) AS avg_evaluation FROM students JOIN student_group ON students.id = student_group.student_id WHERE student_group.group_id = " . $group["id"];
                         $avg_evaluation_result = $conn->query($sql);
                         $avg_evaluation = $avg_evaluation_result->fetch_assoc()["avg_evaluation"];
 
-                        // Calculate the coefficient for the group
+                        
                         $sql = "SELECT SUM(amount) AS group_bets FROM bets WHERE group_id = " . $group["id"];
                         $group_bets_result = $conn->query($sql);
                         $group_bets = $group_bets_result->fetch_assoc()["group_bets"];
-                        $group_bets = $group_bets > 0 ? $group_bets : 0.01; // Avoid division by zero
+                        $group_bets = $group_bets > 0 ? $group_bets : 0.01; 
                         $probability = $total_bets > 0 ? $group_bets / $total_bets : 0;
                         $coefficient = $probability > 0 ? round(1 / $probability, 2) . 'x' : '0x';
 
@@ -95,7 +95,7 @@
                     echo "<p>No groups are participating in this V-Bank.</p>";
                 }
 
-                // Comments section
+                
                 echo "<div class='comments-section'>";
                 echo "<h3>Comments</h3>";
 
@@ -136,7 +136,7 @@
                     echo "<p>No comments yet.</p>";
                 }
 
-                // Comment form
+                
                 if (isset($_SESSION['student_id'])) {
                     echo "<form id='comment-form' action='post_comment.php' method='POST'>";
                     echo "<input type='hidden' name='vbank_id' value='" . $vbank_id . "'>";
@@ -154,7 +154,7 @@
             echo "<h2>No ongoing V-Bank is coming</h2>";
         }
 
-        // Close the connection
+        
         $conn->close();
         ?>
     </main>

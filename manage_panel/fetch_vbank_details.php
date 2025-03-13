@@ -3,21 +3,21 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Include the database credentials
+
 include '../config/variables.php';
 
-// Connect to the database
+
 $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get the V-Bank ID from the query string
+
 $vbank_id = $_GET['vbank_id'];
 
-// Fetch the V-Bank details
+
 $sql = "SELECT id, title, date FROM vbanks WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $vbank_id);
@@ -25,7 +25,7 @@ $stmt->execute();
 $vbank_result = $stmt->get_result();
 $vbank = $vbank_result->fetch_assoc();
 
-// Fetch the groups and bets for the V-Bank
+
 $sql = "SELECT `groups`.id, `groups`.leader_id, students.name AS leader_name, `groups`.grade
         FROM `groups`
         JOIN students ON `groups`.leader_id = students.id
@@ -40,7 +40,7 @@ while ($group = $groups_result->fetch_assoc()) {
     $groups[] = $group;
 }
 
-// Fetch the bets for the V-Bank
+
 $sql = "SELECT bets.id, bets.amount, bets.profit_loss, bets.status, students.name AS student_name, `groups`.id AS group_id, `groups`.leader_id, students.name AS leader_name
         FROM bets
         JOIN `groups` ON bets.group_id = `groups`.id
@@ -56,7 +56,7 @@ while ($bet = $bets_result->fetch_assoc()) {
     $bets[] = $bet;
 }
 
-// Generate the HTML for the V-Bank details
+
 $html = "<div class='panel'>";
 $html .= "<h2>Manage V-Bank: " . $vbank["title"] . "  " . $vbank["date"] . "</h2>";
 
@@ -114,9 +114,9 @@ if (count($bets) > 0) {
 
 $html .= "</div>";
 
-// Return the HTML as a JSON response
+
 echo json_encode(['html' => $html]);
 
-// Close the connection
+
 $conn->close();
 ?>

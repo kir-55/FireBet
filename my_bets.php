@@ -10,33 +10,33 @@
     <?php include 'header.php'; ?>
     <main class="main-container">
         <?php
-        // Include the database credentials
+        
         include 'config/variables.php';
 
-        // Start the session
+        
         if (session_status() == PHP_SESSION_NONE) {
-            session_start(); // Ensure the session is started only if it hasn't been started already
+            session_start(); 
         }
         
 
-        // Check if the user is logged in
+        
         if (!isset($_SESSION['student_id'])) {
             header("Location: login.php");
             exit();
         }
 
-        // Connect to the database
+        
         $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-        // Check connection
+        
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Get the student ID from the session
+        
         $student_id = $_SESSION['student_id'];
 
-        // Query to get the user's bets
+        
         $sql = "SELECT bets.amount, bets.profit_loss, bets.status, `groups`.id AS group_id, `groups`.leader_id, students.name AS leader_name, vbanks.title AS vbank_title
                 FROM bets
                 JOIN `groups` ON bets.group_id = `groups`.id
@@ -52,14 +52,14 @@
             echo "<div class='panel'>";
             echo "<h2>My Bets</h2>";
             while ($bet = $bets_result->fetch_assoc()) {
-                // Calculate the updated coefficient
+                
                 $sql = "SELECT SUM(amount) AS group_bets FROM bets WHERE group_id = ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("i", $bet['group_id']);
                 $stmt->execute();
                 $group_bets_result = $stmt->get_result();
                 $group_bets = $group_bets_result->fetch_assoc()["group_bets"];
-                $group_bets = $group_bets > 0 ? $group_bets : 0.01; // Avoid division by zero
+                $group_bets = $group_bets > 0 ? $group_bets : 0.01; 
                 $probability = (isset($total_bets) && $total_bets > 0) ? $group_bets / $total_bets : 0;
                 $updated_coefficient = $probability > 0 ? round(1 / $probability, 2) . 'x' : '0x';
 
@@ -78,7 +78,7 @@
             echo "<p>You have no bets placed.</p>";
         }
 
-        // Close the connection
+        
         $conn->close();
         ?>
     </main>

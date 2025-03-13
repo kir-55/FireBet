@@ -6,30 +6,30 @@
     <title>FireBet - Place Bet</title>
     <link rel="stylesheet" href="styles.css">
     <?php
-    // Include the database credentials
+    
     include 'config/variables.php';
 
-    // Start the session
+    
     session_start();
 
-    // Check if the user is logged in
+    
     if (!isset($_SESSION['student_id'])) {
         header("Location: login.php");
         exit();
     }
 
-    // Connect to the database
+    
     $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-    // Check connection
+    
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Get the group ID from the query string
+    
     $group_id = $_GET['group_id'];
 
-    // Query to get the group details
+    
     $sql = "SELECT `groups`.id, `groups`.leader_id, students.name AS leader_name, vbanks.title AS vbank_title, vbanks.id AS vbank_id
             FROM `groups`
             JOIN students ON `groups`.leader_id = students.id
@@ -41,23 +41,23 @@
     $group_result = $stmt->get_result();
     $group = $group_result->fetch_assoc();
 
-    // Calculate total bets amount for the V-Bank
+    
     $sql = "SELECT SUM(bets.amount) AS total_bets FROM bets JOIN `groups` ON bets.group_id = `groups`.id WHERE `groups`.vbank_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $group['vbank_id']);
     $stmt->execute();
     $total_bets_result = $stmt->get_result();
     $total_bets = $total_bets_result->fetch_assoc()["total_bets"];
-    $total_bets = $total_bets ? $total_bets : 0; // Set to zero if no bets
+    $total_bets = $total_bets ? $total_bets : 0; 
 
-    // Calculate the current coefficient for the group
+    
     $sql = "SELECT SUM(amount) AS group_bets FROM bets WHERE group_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $group_id);
     $stmt->execute();
     $group_bets_result = $stmt->get_result();
     $group_bets = $group_bets_result->fetch_assoc()["group_bets"];
-    $group_bets = $group_bets > 0 ? $group_bets : 0.01; // Avoid division by zero
+    $group_bets = $group_bets > 0 ? $group_bets : 0.01; 
     $probability = $total_bets > 0 ? $group_bets / $total_bets : 0;
     $current_coefficient = $probability > 0 ? round(1 / $probability, 2) . 'x' : '0x';
     ?>
@@ -84,7 +84,7 @@
         echo "</form>";
         echo "</div>";
 
-        // Close the connection
+        
         $conn->close();
         ?>
     </main>

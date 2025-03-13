@@ -3,28 +3,28 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Include the database credentials
+
 include '../config/constants.php';
 include '../config/variables.php';
 
-// Include the add_admin script to ensure the admin user is added and logged in
+
 include 'add_admin.php';
 
-// Check if the user is logged in and has the appropriate role
+
 if (!isset($_SESSION['name']) || ($_SESSION['role'] != 'admin' && $_SESSION['role'] != 'manager')) {
     header("Location: ../login.php");
     exit();
 }
 
-// Connect to the database
+
 $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch V-Banks
+
 $vbank_sql = "SELECT id, title FROM vbanks";
 $vbank_result = $conn->query($vbank_sql);
 $vbanks = [];
@@ -117,7 +117,7 @@ while ($vbank = $vbank_result->fetch_assoc()) {
                 .then(response => response.text())
                 .then(data => {
                     console.log(data);
-                    location.reload(); // Reload the page to reflect the changes
+                    location.reload(); 
                 });
             }
         }
@@ -133,7 +133,7 @@ while ($vbank = $vbank_result->fetch_assoc()) {
             .then(response => response.text())
             .then(data => {
                 console.log(data);
-                location.reload(); // Reload the page to reflect the changes
+                location.reload(); 
             });
         }
 
@@ -264,6 +264,6 @@ while ($vbank = $vbank_result->fetch_assoc()) {
 </body>
 </html>
 <?php
-// Close the connection
+
 $conn->close();
 ?>

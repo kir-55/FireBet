@@ -176,7 +176,7 @@ if (session_status() == PHP_SESSION_NONE) {
             }
         }
 
-        // Close the side menu on scroll or touch outside
+        
         window.addEventListener('scroll', function() {
             const sideMenu = document.getElementById('side-menu');
             const overlay = document.getElementById('overlay');
